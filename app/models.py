@@ -68,35 +68,35 @@ class Neighborhood(models.Model):
     def get_neighbourhoods(cls):
         return cls.objects.all()
 
-# class Business(models.Model):
-#     business_name=models.CharField(max_length=30, default="Business name")
-#     business_email=models.EmailField(max_length=30, default="Business email")
-#     business_phone=models.CharField(max_length=30, default="Business phone")
-#     business_location=models.CharField(max_length=30, default="Business location")
-#     business_description=models.TextField(max_length=600, default="Business description")
-#     business_image=models.ImageField(upload_to ='business_pics')
-#     neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
-#     user=models.ForeignKey(User, on_delete=models.CASCADE)
+class Business(models.Model):
+    business_name=models.CharField(max_length=30, default="Business name")
+    business_email=models.EmailField(max_length=30, default="Business email")
+    business_phone=models.CharField(max_length=30, default="Business phone")
+    business_location=models.CharField(max_length=30, default="Business location")
+    business_description=models.TextField(max_length=600, default="Business description")
+    business_image=models.ImageField(upload_to ='business_pics')
+    neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
 
 
-#     def __str__(self):
-#         return f'{self.business_name}'
+    def __str__(self):
+        return f'{self.business_name}'
 
-#     @classmethod
-#     def delete_business(self):
-#         self.delete()
+    @classmethod
+    def delete_business(self):
+        self.delete()
 
-#     @classmethod
-#     def find_business(cls, id):
-#         business = Business.objects.filter(id = id).first()
-#         return business
+    @classmethod
+    def find_business(cls, id):
+        business = Business.objects.filter(id = id).first()
+        return business
 
-#     @classmethod
-#     def search_business(cls, name):
-#         return cls.objects.filter(business_name__icontains=name).all()
+    @classmethod
+    def search_business(cls, name):
+        return cls.objects.filter(business_name__icontains=name).all()
 
-#     @classmethod
-#     def get_businesses(cls):
-#         return cls.objects.all()
+    @classmethod
+    def get_businesses(cls):
+        return cls.objects.all()
 
     
