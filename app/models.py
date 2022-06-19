@@ -99,4 +99,31 @@ class Business(models.Model):
     def get_businesses(cls):
         return cls.objects.all()
 
+class Post(models.Model):
+    title=models.CharField(max_length=30, default="Title")
+    post=models.TextField(max_length=600, default="Post")
+    image=models.ImageField(upload_to ='post_pics')
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.title}'
+
+    @classmethod
+    def delete_post(self):
+        self.delete()
+
+    @classmethod
+    def find_post(cls, id):
+        post = Post.objects.filter(id = id).first()
+        return post
+
+    @classmethod
+    def search_post(cls, name):
+        return cls.objects.filter(title__icontains=name).all()
+
+    @classmethod
+    def get_posts(cls):
+        return cls.objects.all()
+
     
