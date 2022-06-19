@@ -11,7 +11,7 @@ class Profile(models.Model):
     phone=models.CharField(max_length=20, default="Phone")
     fname=models.CharField(max_length=30, default="First name")
     lname=models.CharField(max_length=30, default="last name")
-    # neighbourhood=models.ForeignKey(User, on_delete=models.CASCADE)
+    neighborhood=models.OneToOneField('Neighborhood', on_delete=models.CASCADE, null=True)
     user=models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True,related_name='profile')
 
     def __str__(self):
@@ -38,3 +38,65 @@ class Profile(models.Model):
     @classmethod
     def search_profile(cls, name):
         return cls.objects.filter(user__username__icontains=name).all()
+
+
+class Neighborhood(models.Model):
+    name=models.CharField(max_length=30, default="Neighbourhood")
+    location=models.CharField(max_length=30, default="Location")
+    occupants_count=models.IntegerField(default=0)
+    admin=models.ForeignKey(User, on_delete=models.CASCADE)
+    image=models.ImageField(upload_to ='hood_pics') 
+
+
+    def __str__(self):
+        return f'{self.name}'
+
+    @classmethod
+    def delete_neighborhood(self):
+        self.delete()
+    
+    @classmethod
+    def find_neighborhood(cls, id):
+        hood = Neighborhood.objects.filter(id = id).first()
+        return hood
+
+    @classmethod
+    def search_hood(cls, name):
+        return cls.objects.filter(name__icontains=name).all()
+
+    @classmethod
+    def get_neighbourhoods(cls):
+        return cls.objects.all()
+
+# class Business(models.Model):
+#     business_name=models.CharField(max_length=30, default="Business name")
+#     business_email=models.EmailField(max_length=30, default="Business email")
+#     business_phone=models.CharField(max_length=30, default="Business phone")
+#     business_location=models.CharField(max_length=30, default="Business location")
+#     business_description=models.TextField(max_length=600, default="Business description")
+#     business_image=models.ImageField(upload_to ='business_pics')
+#     neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
+#     user=models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+#     def __str__(self):
+#         return f'{self.business_name}'
+
+#     @classmethod
+#     def delete_business(self):
+#         self.delete()
+
+#     @classmethod
+#     def find_business(cls, id):
+#         business = Business.objects.filter(id = id).first()
+#         return business
+
+#     @classmethod
+#     def search_business(cls, name):
+#         return cls.objects.filter(business_name__icontains=name).all()
+
+#     @classmethod
+#     def get_businesses(cls):
+#         return cls.objects.all()
+
+    
