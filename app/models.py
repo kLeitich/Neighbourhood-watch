@@ -11,7 +11,8 @@ class Profile(models.Model):
     phone=models.CharField(max_length=20, default="Phone")
     fname=models.CharField(max_length=30, default="First name")
     lname=models.CharField(max_length=30, default="last name")
-    user=models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)
+    # neighbourhood=models.ForeignKey(User, on_delete=models.CASCADE)
+    user=models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True,related_name='profile')
 
     def __str__(self):
         return f'{self.user.username} insta-profile'
