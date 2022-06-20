@@ -26,3 +26,9 @@ class NeighborhoodAddForm(forms.Form):
     class Meta:
         model = Neighborhood
         fields = ['name', 'location', 'image']
+
+class PostAddForm(forms.Form):
+
+    class Meta:
+        model = Post
+        fields = ['title', 'content', 'image']
