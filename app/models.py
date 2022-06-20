@@ -41,11 +41,12 @@ class Profile(models.Model):
 
 
 class Neighborhood(models.Model):
+    image=models.ImageField(upload_to ='hood_pics') 
     name=models.CharField(max_length=30, default="Neighbourhood")
     location=models.CharField(max_length=30, default="Location")
     occupants_count=models.IntegerField(default=0)
     admin=models.ForeignKey(User, on_delete=models.CASCADE)
-    image=models.ImageField(upload_to ='hood_pics') 
+    
 
 
     def __str__(self):

@@ -1,6 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container">
     <h1>NeighborHood</h1>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            {% for neighborhood in neighborhoods %}
+                <div class="card" style="width: 18rem;">
+                    <img src="{{neighborhood.image.url}} " class="card-img-top" alt="hood">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ neighborhood.name }}</h5>
+                        <p class="card-text">{{ neighborhood.location }}</p>
+                        <a href="#" class="btn btn-primary">View</a>
+                    </div>
+                </div>
+            {% endfor %}
+        
+        </div>
+        <div class="col"></div>
+    </div> 
+</div>
+    
 {% endblock %}
 

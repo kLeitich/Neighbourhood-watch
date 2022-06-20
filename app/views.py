@@ -43,7 +43,8 @@ def add_a_business(request):
     return render(request,'add_a_business.html',{'form': form})
 
 def neighborhood(request):
-    return render(request,'neighborhood.html')
+    neighborhoods=Neighborhood.objects.all()
+    return render(request,'neighborhood.html',{'neighborhoods':neighborhoods})
 
 def add_a_neighborhood(request):
     current_user=request.user
