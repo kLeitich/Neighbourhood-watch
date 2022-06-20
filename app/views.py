@@ -24,4 +24,15 @@ def business(request):
     return render(request,'business.html')
 
 def add_a_business(request):
-    return render(request,'add_a_business.html')
+    if request.method == 'POST':
+        form = BusinessAddForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, f'Your business has been added.')    
+            return redirect('business')
+    else:
+        form = BusinessAddForm()
+
+    context = {'form': form}
+    return render(request,'add_a_business.html',context)
