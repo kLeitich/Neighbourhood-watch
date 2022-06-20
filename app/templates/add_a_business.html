@@ -9,7 +9,7 @@
                 <h3>Add a Business Here</h3>
                 <hr>
     
-                <form action="" method="POST">
+                <form method="POST" enctype="multipart/form-data" >
                     {% csrf_token %}
     
                     {% for field in form %}
@@ -21,7 +21,7 @@
                             {% endfor %}
                         </div>
                     {% endfor %}
-                    <button type="submit">Add a Business</button>
+                    <button type="submit" value="add" >Add a business</button>
                 </form>
             </div>
             <div class="col"></div>

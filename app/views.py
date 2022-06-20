@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from app.forms import UserRegistrationForm,BusinessAddForm
+from app.models import Neighborhood
 
 # Create your views here.
 def home(request):
@@ -24,15 +25,17 @@ def business(request):
     return render(request,'business.html')
 
 def add_a_business(request):
+    current_user=request.user
     if request.method == 'POST':
-        form = BusinessAddForm(request.POST)
+        form = BusinessAddForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            business = form.save(commit=False)
+            business.user = current_user
+            business.save()
+            
 
             messages.success(request, f'Your business has been added.')    
             return redirect('business')
     else:
         form = BusinessAddForm()
-
-    context = {'form': form}
-    return render(request,'add_a_business.html',context)
+    return render(request,'add_a_business.html',{'form': form})
