@@ -23,5 +23,5 @@ def register_user(request):
 def business(request):
     return render(request,'bussiness.html')
 
-# def add_a_business(request):
-#     return render(request,'add_a_business.html')
+def add_a_business(request):
+    return render(request,'add_a_business.html')
