@@ -39,3 +39,6 @@ def add_a_business(request):
     else:
         form = BusinessAddForm()
     return render(request,'add_a_business.html',{'form': form})
+
+def neighborhood(request):
+    return render(request,'neighborhood.html')
