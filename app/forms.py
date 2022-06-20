@@ -1,5 +1,5 @@
 from django import forms
-from .models import Business
+from .models import Business,Neighborhood,Post
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -20,3 +20,9 @@ class BusinessAddForm(forms.Form):
     class Meta:
         model = Business
         fields = ['business_name', 'business_email', 'business_phone', 'business_location', 'business_description', 'business_image']
+
+class NeighborhoodAddForm(forms.Form):
+
+    class Meta:
+        model = Neighborhood
+        fields = ['name', 'location', 'image']

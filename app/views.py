@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from app.forms import UserRegistrationForm,BusinessAddForm
-from app.models import Neighborhood
+from app.forms import NeighborhoodAddForm, UserRegistrationForm,BusinessAddForm
+
 
 # Create your views here.
 def home(request):
