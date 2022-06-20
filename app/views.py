@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from app.forms import NeighborhoodAddForm, PostAddForm, UserRegistrationForm,BusinessAddForm
-from app.models import Neighborhood
+from app.forms import NeighborhoodAddForm, PostAddForm, UserRegistrationForm,BusinessAddForm,UpdateUserProfileForm
+from app.models import Neighborhood,Profile,User,Business,Post
 
 
 # Create your views here.
@@ -86,4 +86,16 @@ def profile(request):
     return render(request,'profile.html')
 
 def update_profile(request):
+    user = User.objects.get(id=id)
+    profile = Profile.objects.get(user = user)
+    if request.method == "POST":
+            form = UpdateUserProfileForm(request.POST,request.FILES,instance=profile)
+            if form.is_valid():
+                form.save()
+                return redirect('profile') 
+            else:
+                return render(request,'update_profile.html',{'form':form})
+    else:        
+        form = UpdateUserProfileForm(instance=profile)
+    return render(request, 'update_profile.html', {'form':form})
     return render(request,'update_profile.html')

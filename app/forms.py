@@ -1,5 +1,5 @@
 from django import forms
-from .models import Business,Neighborhood,Post
+from .models import Business,Neighborhood,Post,Profile
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -32,3 +32,10 @@ class PostAddForm(forms.Form):
     class Meta:
         model = Post
         fields = ['title', 'content', 'image']
+
+
+class UpdateUserProfileForm(forms.Form):
+
+    class Meta:
+        model = Profile
+        fields = ['__all__']
