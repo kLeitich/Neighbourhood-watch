@@ -13,6 +13,7 @@ urlpatterns=[
     path('add_a_business/',views.add_a_business,name='add_a_business'),
     path('neighborhood/',views.neighborhood,name='neighborhood'),
     path('add_a_neighborhood/',views.add_a_neighborhood,name='add_a_neighborhood'),
+    path('post/',views.posts,name='posts'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

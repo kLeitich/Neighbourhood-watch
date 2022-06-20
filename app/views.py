@@ -58,3 +58,7 @@ def add_a_neighborhood(request):
     else:
         form = NeighborhoodAddForm()
     return render(request,'addaneighborhood.html',{'form': form})
+
+
+def posts(request):
+    return render(request,'posts.html')
