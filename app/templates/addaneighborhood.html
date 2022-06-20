@@ -1,5 +1,29 @@
-{% extend 'base.html'%}
+{% extends 'base.html' %}
 
 {% block content %}
-<h1>Add a Neighborhood</h1>
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <h3>Add a NeighborHood Here</h3>
+            <hr>
+
+            <form method="POST" enctype="multipart/form-data" >
+                {% csrf_token %}
+
+                {% for field in form %}
+                    <div>
+                        <p>{{ field.label }}: <br> {{ field }}</p> 
+
+                        {% for error in field.errors %}
+                            <small style="color: red">{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+                <button type="submit" value="add" >Add a NeighborHood</button>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
 {% endblock %}
