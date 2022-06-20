@@ -3,13 +3,10 @@
 
 {% block content %}
 
-<div class="container text-white">
+<div class="container ">
     <div class="row">
         <div class="col-md-6 ">
             
-            <div class="d-flex float-end" style="height: 400px;">
-                <div class="vr"></div>
-            </div>
             {% if profile.ppic %}
             <img src="{{profile.ppic.url}}" alt="ppic" width="300" height="300" class="rounded-circle float-end m-4 ">
             {% else %}
@@ -17,32 +14,32 @@
             {% endif %}
             
         </div> 
-        <div class="col-md-6">
+        <div class="details">
             <div class="container d-flex">
-                <p class="text-uppercase fw-bolder m-4 text-white">{{user.username}}</p> 
-                <a href="" class="m-3 text-white"><button class="btn btn-outline-primary fs-6">EDIT PROFILE</button></a>
+                <p class="text-uppercase fw-bolder m-4 ">{{user.username}}</p> 
+                <a href="" class="m-3 "><button class="btn btn-outline-primary fs-6">EDIT PROFILE</button></a>
             </div>
 
             
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <p class="text-uppercase fw-bolder m-4  text-white">Name</p>    
-                        <p class="m-4 text-white" >{{profile.fname}} {{profile.lname}}</p>
+                        <p class="text-uppercase fw-bolder m-4  ">Name</p>    
+                        <p class="m-4 " >{{profile.fname}} {{profile.lname}}</p>
                     </div>
                     <div class="col-md-6">
-                        <p class="text-uppercase fw-bolder m-4 text-white">Contact</p>
-                        <p class="m-4 text-white">{{user.email}}</p>
-                        <p class="m-4 text-white">{{profile.phone}}</p>
+                        <p class="text-uppercase fw-bolder m-4 ">Contact</p>
+                        <p class="m-4 ">{{user.email}}</p>
+                        <p class="m-4 ">{{profile.phone}}</p>
                         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                            <li class="ms-3"><a class="text-muted text-white" href="#"><i class="bi bi-facebook"></i></a></li>
-                            <li class="ms-3"><a class="text-muted text-white" href="#"><i class="bi bi-twitter"></i></a></li>
-                            <li class="ms-3"><a class="text-muted text-white" href="#"><i class="bi bi-linkedin"></i></a></li>
+                            <li class="ms-3"><a class="text-muted " href="#"><i class="bi bi-facebook"></i></a></li>
+                            <li class="ms-3"><a class="text-muted " href="#"><i class="bi bi-twitter"></i></a></li>
+                            <li class="ms-3"><a class="text-muted " href="#"><i class="bi bi-linkedin"></i></a></li>
                         </ul>
                     </div>
                     
                 </div>
-                <p class=" text-white">BIO:{{profile.bio}}</p>
+                <p class=" ">BIO:{{profile.bio}}</p>
             </div>
             
         </div>

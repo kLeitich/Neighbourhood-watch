@@ -84,3 +84,6 @@ def add_a_post(request):
 
 def profile(request):
     return render(request,'profile.html')
+
+def update_profile(request):
+    return render(request,'update_profile.html')
