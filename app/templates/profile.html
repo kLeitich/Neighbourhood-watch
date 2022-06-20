@@ -1,6 +1,61 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
 
 {% block content %}
-<h1>Profile</h1>
-{% endblock %}
+
+<div class="container text-white">
+    <div class="row">
+        <div class="col-md-6 ">
+            
+            <div class="d-flex float-end" style="height: 400px;">
+                <div class="vr"></div>
+            </div>
+            {% if profile.ppic %}
+            <img src="{{profile.ppic.url}}" alt="ppic" width="300" height="300" class="rounded-circle float-end m-4 ">
+            {% else %}
+            <img src="https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg" alt="ppic" width="300" height="300" class="rounded-circle float-end m-4 ">
+            {% endif %}
+            
+        </div> 
+        <div class="col-md-6">
+            <div class="container d-flex">
+                <p class="text-uppercase fw-bolder m-4 text-white">{{user.username}}</p> 
+                <a href="" class="m-3 text-white"><button class="btn btn-outline-primary fs-6">EDIT PROFILE</button></a>
+            </div>
+
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="text-uppercase fw-bolder m-4  text-white">Name</p>    
+                        <p class="m-4 text-white" >{{profile.fname}} {{profile.lname}}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-uppercase fw-bolder m-4 text-white">Contact</p>
+                        <p class="m-4 text-white">{{user.email}}</p>
+                        <p class="m-4 text-white">{{profile.phone}}</p>
+                        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                            <li class="ms-3"><a class="text-muted text-white" href="#"><i class="bi bi-facebook"></i></a></li>
+                            <li class="ms-3"><a class="text-muted text-white" href="#"><i class="bi bi-twitter"></i></a></li>
+                            <li class="ms-3"><a class="text-muted text-white" href="#"><i class="bi bi-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                <p class=" text-white">BIO:{{profile.bio}}</p>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<hr>
+<div class="container">
+    <div class="row">
+        
+        
+    </div>
+</div>
+
+
+{% endblock %}  

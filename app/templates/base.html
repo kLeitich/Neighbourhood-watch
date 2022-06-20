@@ -66,8 +66,10 @@
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" >
                 <li><a class="dropdown-item" href="#">New project...</a></li>
                 <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a href="{% url 'profile' %}"><button type="button" class="btn btn-primary">{{user.username}}</button></a></li>
+                <li><a href="{% url 'profile' %}" class="dropdown-item">{{user.username}}</a></li>
                 <li><hr class="dropdown-divider"></li>
+                {% endif %}
+                {% if user.is_authenticated %}
                   <li><a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-primary me-2">Logout</button></a></li>
                 {% else %}
                   <li><a href="{% url 'register' %}"><button type="button" class="btn btn-primary">Sign-up</button></a></li>
@@ -103,23 +105,3 @@
     {% endblock %}
 </body>
 </html>
-
-<div class="col-md-3 text-end">
-  {% if user.is_authenticated %}
-                      <div class="" >
-                        {% if user.profile.ppic %}
-                        <img src="{{ user.profile.ppic.url }}" alt="ppic" class="rounded-circle" width="40" height="40">
-                        {% else %}
-                        <img src="https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg" alt="ppic" class="rounded-circle" width="40" height="40">
-                        {% endif %}
-                          <a href="{% url 'profile' %}"><button type="button" class="btn btn-primary">{{user.username}}</button></a>
-                          <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-primary me-2">Logout</button></a>
-                      </div>
-  {% else %}
-                      <div class="">
-                        
-                          <a href="{% url 'register' %}"><button type="button" class="btn btn-primary">Sign-up</button></a>
-                          <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-primary me-2">Login</button></a>
-                      </div>
-    {% endif %}
-</div>
