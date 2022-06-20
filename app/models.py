@@ -83,6 +83,10 @@ class Business(models.Model):
         return f'{self.business_name}'
 
     @classmethod
+    def save_business(self):
+        self.save()
+
+    @classmethod
     def delete_business(self):
         self.delete()
 
