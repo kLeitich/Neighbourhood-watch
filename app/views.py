@@ -21,7 +21,7 @@ def register_user(request):
     return render(request, 'auth/register.html', context)
 
 def business(request):
-    return render(request,'bussiness.html')
+    return render(request,'business.html')
 
 def add_a_business(request):
     return render(request,'add_a_business.html')
