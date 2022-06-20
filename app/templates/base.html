@@ -16,14 +16,30 @@
         <div class="container">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start gap-3">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-                <i class="bi bi-binoculars-fill fs-3">NeighborHood Watch</i>
+                <h3>NeighborHood</h3><i class="bi bi-binoculars-fill fs-3"></i>
             </a>
     
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               <li><a href="#" class="nav-link px-2 link-dark">Home</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">Business</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Business
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Business</a></li>
+                  <li><a class="dropdown-item" href="#">Add a business</a></li>
+                </ul>
+              </li>
               <li><a href="#" class="nav-link px-2 link-dark">Neighborhood</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">Post</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Post
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Post</a></li>
+                  <li><a class="dropdown-item" href="#">Add a post</a></li>
+                </ul>
+              </li>
             </ul>
     
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
