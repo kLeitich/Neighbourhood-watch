@@ -42,3 +42,19 @@ def add_a_business(request):
 
 def neighborhood(request):
     return render(request,'neighborhood.html')
+
+def add_a_neighborhood(request):
+    current_user=request.user
+    if request.method == 'POST':
+        form = NeighborhoodAddForm(request.POST, request.FILES)
+        if form.is_valid():
+            neighborhood = form.save(commit=False)
+            neighborhood.admin = current_user
+            neighborhood.save()
+            
+
+            messages.success(request, f'Your neighborhood has been added.')    
+            return redirect('neighborhood')
+    else:
+        form = NeighborhoodAddForm()
+    return render(request,'add_a_neighborhood.html',{'form': form})
