@@ -20,3 +20,8 @@ def register_user(request):
     context = {'form': form}
     return render(request, 'auth/register.html', context)
 
+def business(request):
+    return render(request,'bussiness.html')
+
+# def add_a_business(request):
+#     return render(request,'add_a_business.html')
