@@ -17,6 +17,7 @@ urlpatterns=[
     path('post/<int:id>/',views.posts,name='post'),
     path('add_a_post/',views.add_a_post,name='add_a_post'),
     path('profile/',views.profile,name='profile'),
+    path('update_profile/<int:id>',views.update_profile,name='update_profile'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

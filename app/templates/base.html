@@ -64,7 +64,7 @@
                 {% endif %}
               </a>
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" >
-                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="{% url 'update_profile' user.id %}">Update Profile</a></li>
                 <li><a class="dropdown-item" href="#">Settings</a></li>
                 <li><a href="{% url 'profile' %}" class="dropdown-item">{{user.username}}</a></li>
                 <li><hr class="dropdown-divider"></li>

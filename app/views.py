@@ -83,9 +83,12 @@ def add_a_post(request):
     return render(request,'add_a_post.html',{'form': form})
 
 def profile(request):
-    return render(request,'profile.html')
+    current_user = request.user
+    user = User.objects.get(id = current_user.id)
+    profile=Profile.filter_profile_by_id(user.id)
+    return render(request,'profile.html',{'profile':profile})
 
-def update_profile(request):
+def update_profile(request,id):
     user = User.objects.get(id=id)
     profile = Profile.objects.get(user = user)
     if request.method == "POST":
@@ -96,6 +99,6 @@ def update_profile(request):
             else:
                 return render(request,'update_profile.html',{'form':form})
     else:        
-        form = UpdateUserProfileForm(instance=profile)
+        form = UpdateUserProfileForm()
     return render(request, 'update_profile.html', {'form':form})
     return render(request,'update_profile.html')

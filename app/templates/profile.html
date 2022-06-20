@@ -17,7 +17,7 @@
         <div class="details">
             <div class="container d-flex">
                 <p class="text-uppercase fw-bolder m-4 ">{{user.username}}</p> 
-                <a href="" class="m-3 "><button class="btn btn-outline-primary fs-6">EDIT PROFILE</button></a>
+                <a href="{% url 'update_profile' user.id %}" class="m-3 "><button class="btn btn-outline-primary fs-6">EDIT PROFILE</button></a>
             </div>
 
             
@@ -39,7 +39,7 @@
                     </div>
                     
                 </div>
-                <p class=" ">BIO:{{profile.bio}}</p>
+                <p class=" ">BIO:<br>{{profile.bio}}</p>
             </div>
             
         </div>

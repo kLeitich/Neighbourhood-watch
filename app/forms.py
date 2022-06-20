@@ -15,27 +15,27 @@ class UserRegistrationForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
-class BusinessAddForm(forms.Form):
+class BusinessAddForm(forms.ModelForm):
 
     class Meta:
         model = Business
         fields = ['business_name', 'business_email', 'business_phone', 'business_location', 'business_description', 'business_image']
 
-class NeighborhoodAddForm(forms.Form):
+class NeighborhoodAddForm(forms.ModelForm):
 
     class Meta:
         model = Neighborhood
         fields = ['name', 'location', 'image']
 
-class PostAddForm(forms.Form):
+class PostAddForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ['title', 'content', 'image']
+        fields = ['title', 'post', 'image']
 
 
-class UpdateUserProfileForm(forms.Form):
+class UpdateUserProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['__all__']
+        fields = ['fname', 'lname', 'ppic', 'bio','phone']
