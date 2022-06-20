@@ -62,3 +62,20 @@ def add_a_neighborhood(request):
 
 def posts(request):
     return render(request,'posts.html')
+
+
+def add_a_post(request):
+    current_user=request.user
+    if request.method == 'POST':
+        form = PostAddForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = current_user
+            post.save()
+            
+
+            messages.success(request, f'Your post has been added.')    
+            return redirect('posts')
+        else:
+            form=PostAddForm()
+    return render(request,'add_a_post.html')

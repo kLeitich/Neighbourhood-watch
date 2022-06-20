@@ -14,6 +14,8 @@ urlpatterns=[
     path('neighborhood/',views.neighborhood,name='neighborhood'),
     path('add_a_neighborhood/',views.add_a_neighborhood,name='add_a_neighborhood'),
     path('post/',views.posts,name='posts'),
+    path('post/<int:id>/',views.posts,name='post'),
+    path('add_a_post/',views.add_a_post,name='add_a_post'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
