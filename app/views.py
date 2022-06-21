@@ -25,17 +25,17 @@ def register_user(request):
 def business(request):
     return render(request,'business.html')
 
-def add_a_business(request):
+def add_a_business(request,id):
     current_user=request.user
-    neighborhood=Neighborhood.objects.get(id=neighborhood.id)
+    # neighborhood=Neighborhood.find_neighborhood(current_user.id)
+    neighborhood=Neighborhood.objects.get(id=id)
     if request.method == 'POST':
         form = BusinessAddForm(request.POST, request.FILES,instance=neighborhood)
         if form.is_valid():
             business = form.save(commit=False)
             business.user = current_user
+            business.neighborhood = neighborhood
             business.save()
-            
-
             messages.success(request, f'Your business has been added.')    
             return redirect('business')
     else:
@@ -67,20 +67,22 @@ def posts(request):
     return render(request,'posts.html')
 
 
-def add_a_post(request):
+def add_a_post(request,neighborhood_id):
     current_user=request.user
+    neighborhood=Neighborhood.objects.get(id=neighborhood_id)
     if request.method == 'POST':
-        form = PostAddForm(request.POST, request.FILES)
+        form = PostAddForm(request.POST, request.FILES,instance=neighborhood)
         if form.is_valid():
             post = form.save(commit=False)
             post.user = current_user
+            post.neighborhood = neighborhood
             post.save()
             
 
             messages.success(request, f'Your post has been added.')    
             return redirect('posts')
-        else:
-            form=PostAddForm()
+    else:
+        form=PostAddForm()
     return render(request,'add_a_post.html',{'form': form})
 
 def profile(request):

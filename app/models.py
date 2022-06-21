@@ -109,7 +109,7 @@ class Post(models.Model):
     post=models.TextField(max_length=600, default="Post")
     image=models.ImageField(upload_to ='post_pics')
     user=models.ForeignKey(User, on_delete=models.CASCADE)
-    neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
+    neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True)
 
     def __str__(self):
         return f'{self.title}'
