@@ -6,7 +6,10 @@ from app.models import Neighborhood,Profile,User,Business,Post
 
 # Create your views here.
 def home(request):
-    return render(request,'index.html')
+    business=Business.objects.all()
+    neighborhoods=Neighborhood.objects.all()
+    posts=Post.objects.all()
+    return render(request,'index.html',{'business':business,'neighborhoods':neighborhoods,'posts':posts})
 
 def register_user(request):
     if request.method == 'POST':
