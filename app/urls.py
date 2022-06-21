@@ -15,7 +15,7 @@ urlpatterns=[
     path('add_a_neighborhood/',views.add_a_neighborhood,name='add_a_neighborhood'),
     path('post/',views.posts,name='posts'),
     path('post/<int:id>/',views.posts,name='post'),
-    path('add_a_post/<neighborhood_id>',views.add_a_post,name='add_a_post'),
+    path('add_a_post/',views.add_a_post,name='add_a_post'),
     path('profile/',views.profile,name='profile'),
     path('update_profile/<int:id>',views.update_profile,name='update_profile'),
 ]

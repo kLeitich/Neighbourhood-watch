@@ -67,15 +67,15 @@ def posts(request):
     return render(request,'posts.html')
 
 
-def add_a_post(request,neighborhood_id):
+def add_a_post(request):
     current_user=request.user
-    neighborhood=Neighborhood.objects.get(id=neighborhood_id)
+    # neighborhood=Neighborhood.objects.get(id=current_user.id)
     if request.method == 'POST':
-        form = PostAddForm(request.POST, request.FILES,instance=neighborhood)
+        form = PostAddForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.user = current_user
-            post.neighborhood = neighborhood
+            # post.neighborhood = neighborhood
             post.save()
             
 
