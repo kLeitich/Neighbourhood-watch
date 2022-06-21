@@ -5,6 +5,7 @@ from app.models import Neighborhood,Profile,User,Business,Post
 
 
 # Create your views here.
+@login_required(login_url='login') 
 def home(request):
     business=Business.objects.all()
     neighborhoods=Neighborhood.objects.all()
@@ -24,11 +25,11 @@ def register_user(request):
 
     context = {'form': form}
     return render(request, 'auth/register.html', context)
-
+@login_required(login_url='login') 
 def business(request):
     business=Business.objects.all()
     return render(request,'business.html',{'business':business})
-
+@login_required(login_url='login') 
 def add_a_business(request):
     current_user=request.user
     # neighborhood=Neighborhood.find_neighborhood(current_user.id)
@@ -44,11 +45,11 @@ def add_a_business(request):
     else:
         form = BusinessAddForm()
     return render(request,'add_a_business.html',{'form': form})
-
+@login_required(login_url='login') 
 def neighborhood(request):
     neighborhoods=Neighborhood.objects.all()
     return render(request,'neighborhood.html',{'neighborhoods':neighborhoods})
-
+@login_required(login_url='login') 
 def add_a_neighborhood(request):
     current_user=request.user
     if request.method == 'POST':
@@ -65,12 +66,12 @@ def add_a_neighborhood(request):
         form = NeighborhoodAddForm()
     return render(request,'addaneighborhood.html',{'form': form})
 
-
+@login_required(login_url='login') 
 def posts(request):
     posts=Post.objects.all()
     return render(request,'posts.html',{'posts':posts})
 
-
+@login_required(login_url='login') 
 def add_a_post(request):
     current_user=request.user
 
@@ -88,13 +89,13 @@ def add_a_post(request):
     else:
         form=PostAddForm()
     return render(request,'add_a_post.html',{'form': form})
-
+@login_required(login_url='login') 
 def profile(request):
     current_user = request.user
     user = User.objects.get(id = current_user.id)
     profile=Profile.filter_profile_by_id(user.id)
     return render(request,'profile.html',{'profile':profile})
-
+@login_required(login_url='login') 
 def update_profile(request,id):
     user = User.objects.get(id=id)
     profile = Profile.objects.get(user = user)
