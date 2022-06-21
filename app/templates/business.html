@@ -3,28 +3,33 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col"></div>
-        <div class="col">
-            {% for b in business %}
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{b.}}</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">An item</li>
-                  <li class="list-group-item">A second item</li>
-                  <li class="list-group-item">A third item</li>
-                </ul>
-                <div class="card-body">
-                  <a href="#" class="card-link">Order</a>
-                  <a href="#" class="card-link">Reserve</a>
-                </div>
+        <div class="col-2"></div>
+        <div class="col-8">
+           <div class="container-fluid">
+            <div class="row">
+                {% for b in business %}
+                <div class="col-md-6">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{b.business_image.url}}" class="card-img-top" alt="{{b.business_name}}">
+                        <div class="card-body">
+                          <h5 class="card-title">{{b.business_name}}</h5>
+                          <p class="card-text">{{b.business_description}}</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item"><h5>Location: </h5>{{b.business_location}}</li>
+                          <li class="list-group-item"><h5>Phone: </h5>{{b.business_phone}}</li>
+                          <li class="list-group-item"><h5>Email: </h5>{{b.business_email}}</li>
+                        </ul>
+                        <div class="card-body">
+                          <a href="#" class="card-link">Order</a>
+                          <a href="#" class="card-link">Reserve</a>
+                        </div>
+                    </div>
+                </div> {% endfor %}
             </div>
-            {% endfor %}
+           </div>
         </div>
-        <div class="col"></div>
+        <div class="col-2"></div>
     </div>
 </div>
 {% endblock %}
