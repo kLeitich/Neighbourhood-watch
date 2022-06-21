@@ -76,7 +76,7 @@ class Business(models.Model):
     business_location=models.CharField(max_length=30, default="Business location")
     business_description=models.TextField(max_length=600, default="Business description")
     business_image=models.ImageField(upload_to ='business_pics')
-    neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
+    neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True)
     user=models.ForeignKey(User, on_delete=models.CASCADE)
 
 

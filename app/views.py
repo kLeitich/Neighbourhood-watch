@@ -25,16 +25,15 @@ def register_user(request):
 def business(request):
     return render(request,'business.html')
 
-def add_a_business(request,id):
+def add_a_business(request):
     current_user=request.user
     # neighborhood=Neighborhood.find_neighborhood(current_user.id)
-    neighborhood=Neighborhood.objects.get(id=id)
+    # neighborhood=Neighborhood.objects.get(id=id)
     if request.method == 'POST':
-        form = BusinessAddForm(request.POST, request.FILES,instance=neighborhood)
+        form = BusinessAddForm(request.POST, request.FILES)
         if form.is_valid():
             business = form.save(commit=False)
             business.user = current_user
-            business.neighborhood = neighborhood
             business.save()
             messages.success(request, f'Your business has been added.')    
             return redirect('business')
@@ -69,13 +68,13 @@ def posts(request):
 
 def add_a_post(request):
     current_user=request.user
-    # neighborhood=Neighborhood.objects.get(id=current_user.id)
+
     if request.method == 'POST':
         form = PostAddForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.user = current_user
-            # post.neighborhood = neighborhood
+           
             post.save()
             
 
