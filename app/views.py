@@ -23,7 +23,8 @@ def register_user(request):
     return render(request, 'auth/register.html', context)
 
 def business(request):
-    return render(request,'business.html')
+    business=Business.objects.all()
+    return render(request,'business.html',{'business':business})
 
 def add_a_business(request):
     current_user=request.user
@@ -63,7 +64,8 @@ def add_a_neighborhood(request):
 
 
 def posts(request):
-    return render(request,'posts.html')
+    posts=Post.objects.all()
+    return render(request,'posts.html',{'posts':posts})
 
 
 def add_a_post(request):
@@ -103,4 +105,4 @@ def update_profile(request,id):
     else:        
         form = UpdateUserProfileForm()
     return render(request, 'update_profile.html', {'form':form})
-    return render(request,'update_profile.html')
+    
