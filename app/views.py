@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from app.forms import NeighborhoodAddForm, PostAddForm, UserRegistrationForm,BusinessAddForm,UpdateUserProfileForm
 from app.models import Neighborhood,Profile,User,Business,Post
